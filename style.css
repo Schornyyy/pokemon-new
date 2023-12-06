@@ -1,0 +1,63 @@
+body {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  margin: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.pokemonInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 20px 10px;
+}
+
+.types-list {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.pokemonImage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.types-list p {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.grass {
+  background-color: #78c850;
+}
+
+.fire {
+  background-color: #f08030;
+}
+
+.water {
+  background-color: #6890f0;
+}
+
+.bug {
+  background-color: #a8b820;
+}
+
+.normal {
+  background-color: #a8a878;
+}
