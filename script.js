@@ -1,5 +1,6 @@
 let pokemons = []; // Globale Variable
-let pokemonsJson = [];
+let pokemonsJson = []; 
+let now;
 
 async function fetchPokemon() {
     let url = 'https://pokeapi.co/api/v2/pokemon/?offset=0&limit=15;';
@@ -21,14 +22,13 @@ async function loadPokemonIndex() {
         let resp = await fetch(url);
         let respJson = await resp.json();
         pokemonsJson.push(respJson);
-        createHTMLIndexCard(container, respJson);
+        createHTMLPokemonCard(container, respJson);
     }
 }
 
-function createHTMLIndexCard(container, json) {
-    console.log(json);
+function createHTMLPokemonCard(container, json) {
     container.innerHTML += /*html*/`
-        <div class='card ${json.types[0].type.name}'>
+        <div class='card ${json.types[0].type.name}' onclick="createHTMLPokemonPopup(${json.id})">
             <div class="pokemonInfo">
                 <p class="pokeName">${json.name}</p>
                 <div class="types-list" id=${json.id}>
@@ -41,12 +41,27 @@ function createHTMLIndexCard(container, json) {
         </div>
     `
 
+    mapPokemonType(json);
+}
+
+function mapPokemonType(json) {
     let typesList = document.getElementById(json.id);
     typesList.innerHTML = "";
     json.types.map((type) => {
         typesList.innerHTML += /*html*/`
             <p>${type.type.name}</p>
         `
-    }) 
+    });
 }
+
+function createHTMLPokemonPopup(index) {
+    now = index;
+    let popup_container = document.getElementById("popup-container");
+    popup_container.style = "display: flex;";
+    let pokemonJson = pokemonsJson[index];
+    let pokemonName = document.getElementById("pokemon-popup-name");
+    pokemonName.innerHTML = pokemonJson.name;
+}
+
+
 
