@@ -56,11 +56,27 @@ function mapPokemonType(json) {
 
 function createHTMLPokemonPopup(index) {
     now = index;
+    let pokemonJson = pokemonsJson[index];
+
     let popup_container = document.getElementById("popup-container");
     popup_container.style = "display: flex;";
-    let pokemonJson = pokemonsJson[index];
+
+    let popup = document.getElementById("popup");
+    popup.classList.add(pokemonJson.types[0].type.name); // -> Classe removen
+
+
     let pokemonName = document.getElementById("pokemon-popup-name");
     pokemonName.innerHTML = pokemonJson.name;
+
+    let pokemon_image = document.getElementById("pokemon-image");
+    pokemon_image.src = pokemonJson.sprites.front_default;
+
+    let types = document.getElementById("popup-types-list");
+    pokemonJson.types.map((type) => {
+        types.innerHTML += /*html*/`
+        <p class=${type.type.name}>${type.type.name}</p>
+    `
+    })
 }
 
 

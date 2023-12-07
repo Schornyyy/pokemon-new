@@ -58,12 +58,46 @@ body {
 
 #popup {
   position: absolute;
-  top: 50%;
+  top: 25%;
   display: flex;
   z-index: 100;
   flex-direction: column;
+  width: 20rem;
+  height: 30rem;
+  border-radius: 30px 30px 0px 0px;
+}
+
+#pokemon-popup-name {
   padding: 15px;
+  color: white;
+}
+
+#pokemon-image {
+  padding: 15px;
+  height: 10rem;
+  object-fit: contain;
+}
+
+.content {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   background-color: white;
+  width: 100%;
+  height: 12.2rem;
+  border-radius: 20px 20px 0px 0px;
+}
+
+#abbilities {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+#popup-types-list p {
+  padding: 5px 10px;
+  color: white;
+  border-radius: 5px;
 }
 
 .grass {
